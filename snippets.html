@@ -3,10 +3,13 @@
 <meta charset="utf-8" />
 <!-- Resources:
  * https://www.w3schools.com/Js/js_intro.asp
- * Last position: https://www.w3schools.com/Js/js_datatypes.asp
+ * Last position: https://www.w3schools.com/Js/js_string_methods.asp
  * JS keywords: https://www.w3schools.com/Js/js_reserved.asp
  * Block and inline elements: https://www.w3schools.com/htmL/html_blocks.asp
  * Unicode reference: https://www.w3schools.com/charsets/ref_html_utf8.asp
+ * Some common HTML events: https://www.w3schools.com/Js/js_events.asp
+ * Valid escape sequences: https://www.w3schools.com/Js/js_strings.asp
+ * String methods: https://www.w3schools.com/Js/js_string_methods.asp
 -->
 
 <html>
@@ -16,6 +19,35 @@
 </head>
 
 <body>
+
+<!-- %% Working with strings: escape characters, methods and multiline -->
+<hr>
+<span id='string-stuff'></span>
+<script>
+  var mystring = "Hello my name is Danny, that is my name"
+  document.getElementById('string-stuff').innerHTML=
+  "The string \"" + mystring + "\" has length " + 
+  "equal to " + mystring.length + " and the index of \'Danny\' " +
+  "is " + mystring.indexOf("Danny") + ". The last index of \'name\' " + 
+  "is " + mystring.lastIndexOf("name") + ". We can also use regex " +
+  " to search for the firt non-word character, which is at index " + 
+  mystring.search(/\W/) + ". The 11th and 12th characters are \'" +
+  mystring.substring(10,12) + "\'"
+  // Objects cannot be compared. Also, don't make String objects.
+  var s1 = new String("hi");
+  var s2 = new String("hi")
+  console.log(s1 == s2)
+</script>
+
+
+<!-- %% There are other HTML events -->
+<hr>
+<div>This behaves strangely on firefox but fine on chrome:</div> 
+<button onmouseover="this.innerHTML=Date()" onclick=
+  "this.innerHTML='I am the message'" onmouseout=
+  "this.innerHTML='Mouse over for date and click for a message'">
+  Mouse over for date and click for a message.
+</button>
 
 <!-- %% Objects can have methods and attributes -->
 <script>
@@ -105,6 +137,7 @@
 </script>
 
 <!-- %% A JS program with multiline JS comments -->
+<hr>
 <span id="statements-demo"></span>
 <script>
   /*
@@ -119,7 +152,7 @@
 </script>
 
 <!-- %% Print this page button -->
-<HR>
+<hr>
 <button onclick="window.print()">
   Print this page
 </button>
@@ -130,33 +163,33 @@
 </script>
 
 <!-- %% Use window.alert to make alert box (you can leave off 'window') -->
-<HR>
+<hr>
 <span>Use window.alert</span>
 <button type="button" onclick="window.alert(40 + 2)">
   Make alert box!
 </button>
 
 <!-- %% Using document.write after loading will delete all HTML -->
-<HR>
+<hr>
 <span>Using document.write after loading</span>
 <button type="button" onclick="document.write(40 + 2)">
   Delete all html!
 </button>
 
 <!-- %% Writing direct into html output -->
-<HR>
+<hr>
 <script>
   document.write("Just writing a number: " + (5 + 6))
 </script>
 
 <!-- %% External scripts can be referenced by url -->
-<HR>
+<hr>
 <span id="demo"> External scripts can be referenced by url </span>
 <button type="button" onclick="myFunction()">Click me!</button>
 <script src="https://www.w3schools.com/js/myScript.js"></script>
 
 <!-- %% External JS script -->
-<HR>
+<hr>
 <span id="source-demo"> External JS script </span>
 <script src="snippets.js"></script>
 <button type="button" onclick="myFunction2()">
@@ -173,12 +206,12 @@
     }
   </script>
 </head>
-<HR>
+<hr>
 <span id="head-function-demo"> JS function defined in &lt;head&gt; </span>
 <button type="button" onclick="myFunction3()">Try it</button>
 
 <!-- %% JS code is inserted in the script tag -->
-<HR>
+<hr>
 <span>JS in body of script tag</span>
 <p id="script-demo"></p>
 <script>
@@ -187,28 +220,28 @@
 </script>
 
 <!-- %% JS can show HTML elements -->
-<HR>
+<hr>
 <span id="show-demo" style='display:none'>JS can show HTML elements</span>
 <button type="button" onclick="document.getElementById('show-demo').style.display='inline'">
   Click Me!
 </button>
 
 <!-- %% JS can hide HTML elements -->
-<HR>
+<hr>
 <span id="hide-demo">JS can hide HTML elements</span>
 <button type="button" onclick="document.getElementById('hide-demo').style.display='none'">
   Click Me!
 </button>
 
 <!-- %% JS can change HTML Styles (CSS) -->
-<HR>
+<hr>
 <span id="CSS-demo">JS can change HTML Styles (CSS)</span>
 <button type="button" onclick="document.getElementById('CSS-demo').style.fontSize='35px'">
   Click me!
 </button>
 
 <!-- %% JS can change HTML attribute values -->
-<HR>
+<hr>
 <span>JS can change HTML attribute values</span>
 <p>In this case JS changes the value of the src (source) attribute of an image.</p>
 <button onclick="document.getElementById('myImage').src=
@@ -222,13 +255,15 @@
 </button>
 
 <!-- %% JS can change HTML content -->
-<HR>
-<span id="content-demo">JS can change HTML content</span>
+<hr>
+<span id="content-demo">JS can change HTML content.
+  Here, an onclick event is added to a &lt;button&gt; element.
+</span>
 <button type="button" onclick='document.getElementById("content-demo").innerHTML= 
   "Hello JavaScript!"'>
   Click me!
 </button>
-<HR>
+<hr>
 
 
 </body>
