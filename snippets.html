@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<!-- Resources:
+ * https://www.w3schools.com/Js/js_intro.asp
+ * Last position: https://www.w3schools.com/Js/js_datatypes.asp
+ * JS keywords: https://www.w3schools.com/Js/js_reserved.asp
+ * Block and inline elements: https://www.w3schools.com/htmL/html_blocks.asp
+ * Unicode reference: https://www.w3schools.com/charsets/ref_html_utf8.asp
+-->
+
+<html>
+
+<head>
+  <title> Snippets </title>
+</head>
+
+<body>
+
+<!-- %% Objects can have methods and attributes -->
+<script>
+  var person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    eyeColor: "blue",
+    fullName: function () {
+      return this.firstName + " " + this.lastName;
+    }
+  };
+  var a = person.eyeColor
+  var b = person["age"]
+  console.log(person.fullName() + ": " + a + ", " + b)
+</script>
+
+<!-- %% Undefined and null are equal in value but different in type -->
+<script>
+  typeof undefined           // undefined
+  typeof null                // object
+
+  console.log(null === undefined) // false
+  console.log(null == undefined)  // true 
+</script>
+
+<!-- %% check type and instance of a variable -->
+<script>
+  console.log("type: " + typeof [1, 2, 3, 4])
+  console.log("type: " + typeof { a: "a" })
+  console.log("is an object: " + ({ a: "a" } instanceof Object))
+</script>
+
+<!-- %% A const is a constant reference but not a constant object -->
+<script>
+  const car = { type: "Fiat", model: "500", color: "white" };
+  car.color = "red"; // change a property
+  car.owner = "Johnson"; // add a property
+  // car = {type:"Fiat", model:"500", color:"red"}; // redeclaration error
+
+  const cars = ["Saab", "Volvo", "BMW"];
+  cars[0] = "Toyota";
+  cars.push("Audi");
+  // cars = ["Toyota", "Volvo", "Audi"]; // redeclaration error
+</script>
+
+<!-- %% var and let scoping -->
+<script>
+  // let and const are JS ES6 additions
+  {
+    let x = 2;
+  }
+  // x can NOT be used here 
+  var x = 10;
+  // Here x is 10
+  {
+    let x = 2;
+    // Here x is 2
+  }
+  // Here x is 10 
+  var i = 5;
+  for (var i = 0; i < 10; i++) {
+    // some statements
+  }
+  // Here i is 10 
+  let j = 5;
+  for (let j = 0; j < 10; j++) {
+    // some statements
+  }
+  // Here j is 5
+  // Note: Global variables defined with the let 
+  //       keyword do not belong to the window object.
+</script>
+
+<!-- %% Some features of variable declaration and naming -->
+<script>
+  var person = "John Doe",
+    carName = "Volvo",
+    price = 200;
+  var myundef;
+  console.log("myundef is " + myundef);
+  // Often use $ as an alias for the main function.
+  // In jQuery $("p"); means "select all p elements".
+  var $$$ = "money";
+  // Use _ as an alias for "private (hidden)" variables
+  var _x = 2;
+</script>
+
+<!-- %% A JS program with multiline JS comments -->
+<span id="statements-demo"></span>
+<script>
+  /*
+  Some multiline JS comments 
+  */
+  var x, y, z;
+  x = 5;
+  y = 6;
+  z = x + y;
+  document.getElementById("statements-demo").innerHTML =
+    "The value of z is " + z + ".";
+</script>
+
+<!-- %% Print this page button -->
+<HR>
+<button onclick="window.print()">
+  Print this page
+</button>
+
+<!-- %% Print to the console log (firefox CTRL + SHFT + K) -->
+<script>
+  console.log(5 + 6);
+</script>
+
+<!-- %% Use window.alert to make alert box (you can leave off 'window') -->
+<HR>
+<span>Use window.alert</span>
+<button type="button" onclick="window.alert(40 + 2)">
+  Make alert box!
+</button>
+
+<!-- %% Using document.write after loading will delete all HTML -->
+<HR>
+<span>Using document.write after loading</span>
+<button type="button" onclick="document.write(40 + 2)">
+  Delete all html!
+</button>
+
+<!-- %% Writing direct into html output -->
+<HR>
+<script>
+  document.write("Just writing a number: " + (5 + 6))
+</script>
+
+<!-- %% External scripts can be referenced by url -->
+<HR>
+<span id="demo"> External scripts can be referenced by url </span>
+<button type="button" onclick="myFunction()">Click me!</button>
+<script src="https://www.w3schools.com/js/myScript.js"></script>
+
+<!-- %% External JS script -->
+<HR>
+<span id="source-demo"> External JS script </span>
+<script src="snippets.js"></script>
+<button type="button" onclick="myFunction2()">
+  Click me!
+</button>
+
+<!-- %% JS function defined in <head> -->
+
+<head>
+  <script>
+    function myFunction3() {
+      document.getElementById("head-function-demo").innerHTML =
+        "Paragraph changed from function in head.";
+    }
+  </script>
+</head>
+<HR>
+<span id="head-function-demo"> JS function defined in &lt;head&gt; </span>
+<button type="button" onclick="myFunction3()">Try it</button>
+
+<!-- %% JS code is inserted in the script tag -->
+<HR>
+<span>JS in body of script tag</span>
+<p id="script-demo"></p>
+<script>
+  document.getElementById("script-demo").innerHTML =
+    "My First JS (" + (40 + 2) + ")";
+</script>
+
+<!-- %% JS can show HTML elements -->
+<HR>
+<span id="show-demo" style='display:none'>JS can show HTML elements</span>
+<button type="button" onclick="document.getElementById('show-demo').style.display='inline'">
+  Click Me!
+</button>
+
+<!-- %% JS can hide HTML elements -->
+<HR>
+<span id="hide-demo">JS can hide HTML elements</span>
+<button type="button" onclick="document.getElementById('hide-demo').style.display='none'">
+  Click Me!
+</button>
+
+<!-- %% JS can change HTML Styles (CSS) -->
+<HR>
+<span id="CSS-demo">JS can change HTML Styles (CSS)</span>
+<button type="button" onclick="document.getElementById('CSS-demo').style.fontSize='35px'">
+  Click me!
+</button>
+
+<!-- %% JS can change HTML attribute values -->
+<HR>
+<span>JS can change HTML attribute values</span>
+<p>In this case JS changes the value of the src (source) attribute of an image.</p>
+<button onclick="document.getElementById('myImage').src=
+  'https://www.w3schools.com/js/pic_bulbon.gif'">
+  Turn on the light
+</button>
+<img id="myImage" src='https://www.w3schools.com/js/pic_bulboff.gif' style="width:100px">
+<button onclick="document.getElementById('myImage').src=
+  'https://www.w3schools.com/js/pic_bulboff.gif'">
+  Turn off the light
+</button>
+
+<!-- %% JS can change HTML content -->
+<HR>
+<span id="content-demo">JS can change HTML content</span>
+<button type="button" onclick='document.getElementById("content-demo").innerHTML= 
+  "Hello JavaScript!"'>
+  Click me!
+</button>
+<HR>
+
+
+</body>
+
+</html>
